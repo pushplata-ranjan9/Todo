@@ -1,9 +1,12 @@
 """
 Script to help create GitHub issues from ISSUES.md
-This script parses ISSUES.md and creates a JSON file that can be used with GitHub CLI
+This script parses ISSUES.md and creates issues using GitHub CLI
 """
 import re
 import json
+import os
+import subprocess
+import tempfile
 
 def parse_issues_file():
     """Parse ISSUES.md and extract issue information"""
@@ -54,19 +57,81 @@ def parse_issues_file():
     
     return issues
 
-def create_github_cli_commands(issues):
-    """Generate GitHub CLI commands for creating issues"""
-    commands = []
+def get_all_labels(issues):
+    """Extract all unique labels from issues"""
+    labels = set()
+    for issue in issues:
+        for label in issue.get('labels', []):
+            labels.add(label)
+    return sorted(labels)
+
+def create_labels(labels):
+    """Create labels in the repository if they don't exist"""
+    # Label colors
+    label_colors = {
+        'frontend': '1d76db',
+        'backend': '0e8a16',
+        'enhancement': 'a2eeef',
+        'good first issue': '7057ff',
+        'easy': 'c5def5',
+        'medium': 'fbca04',
+        'hard': 'd93f0b',
+        'bug': 'd73a4a',
+        'documentation': '0075ca',
+    }
+    
+    print("Creating labels...")
+    for label in labels:
+        color = label_colors.get(label, 'ededed')
+        try:
+            result = subprocess.run(
+                ['gh', 'label', 'create', label, '--color', color, '--force'],
+                capture_output=True, text=True
+            )
+            if result.returncode == 0:
+                print(f"  ✓ Created label: {label}")
+            else:
+                print(f"  ⚠ Label '{label}': {result.stderr.strip()}")
+        except Exception as e:
+            print(f"  ✗ Error creating label '{label}': {e}")
+
+def create_issues_with_cli(issues):
+    """Create issues using GitHub CLI with temp files for body content"""
+    created = 0
+    failed = 0
     
     for i, issue in enumerate(issues, 1):
-        labels = ' '.join([f'--label "{label}"' for label in issue.get('labels', [])])
         title = issue.get('title', f'Issue #{i}')
-        body = issue.get('body', '').replace('"', '\\"').replace('\n', '\\n')
+        body = issue.get('body', '')
+        labels = issue.get('labels', [])
         
-        command = f'gh issue create --title "{title}" --body "{body}" {labels}'
-        commands.append(command)
+        print(f"\n[{i}/{len(issues)}] Creating: {title}")
+        
+        # Write body to temp file to avoid shell escaping issues
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as f:
+            f.write(body)
+            body_file = f.name
+        
+        try:
+            cmd = ['gh', 'issue', 'create', '--title', title, '--body-file', body_file]
+            for label in labels:
+                cmd.extend(['--label', label])
+            
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            
+            if result.returncode == 0:
+                print(f"  ✓ Created: {result.stdout.strip()}")
+                created += 1
+            else:
+                print(f"  ✗ Failed: {result.stderr.strip()}")
+                failed += 1
+        except Exception as e:
+            print(f"  ✗ Error: {e}")
+            failed += 1
+        finally:
+            os.unlink(body_file)
     
-    return commands
+    return created, failed
 
 def main():
     """Main function"""
@@ -75,26 +140,38 @@ def main():
     
     print(f"Found {len(issues)} issues")
     
-    # Save as JSON
+    # Save as JSON for reference
     with open('issues.json', 'w', encoding='utf-8') as f:
         json.dump(issues, f, indent=2, ensure_ascii=False)
-    
     print("Saved issues to issues.json")
     
-    # Generate GitHub CLI commands
-    commands = create_github_cli_commands(issues)
+    # Check if gh is available
+    try:
+        subprocess.run(['gh', '--version'], capture_output=True, check=True)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        print("\n⚠ GitHub CLI (gh) is not installed or not in PATH.")
+        print("Install it with: brew install gh")
+        print("Then authenticate with: gh auth login")
+        return
     
-    with open('create_issues.sh', 'w', encoding='utf-8') as f:
-        f.write('#!/bin/bash\n')
-        f.write('# GitHub CLI commands to create issues\n')
-        f.write('# Usage: bash create_issues.sh\n\n')
-        for cmd in commands:
-            f.write(cmd + '\n')
+    # Check if authenticated
+    result = subprocess.run(['gh', 'auth', 'status'], capture_output=True, text=True)
+    if result.returncode != 0:
+        print("\n⚠ Not authenticated with GitHub CLI.")
+        print("Run: gh auth login")
+        return
     
-    print("Saved GitHub CLI commands to create_issues.sh")
-    print("\nTo create issues, run:")
-    print("  bash create_issues.sh")
-    print("\nOr use the GitHub web interface with issues.json")
+    # Get all unique labels and create them
+    all_labels = get_all_labels(issues)
+    print(f"\nFound {len(all_labels)} unique labels: {', '.join(all_labels)}")
+    create_labels(all_labels)
+    
+    # Create issues
+    print(f"\nCreating {len(issues)} issues...")
+    created, failed = create_issues_with_cli(issues)
+    
+    print(f"\n{'='*50}")
+    print(f"Done! Created: {created}, Failed: {failed}")
 
 if __name__ == '__main__':
     main()
