@@ -1,0 +1,374 @@
+[
+  {
+    "title": "Add Dark Mode Toggle",
+    "labels": [
+      "frontend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Add a dark mode toggle button in the header that switches between light and dark themes. The theme preference should be saved in localStorage and persist across page reloads.\n\n## Acceptance Criteria\n- [ ] Dark mode toggle button in header\n- [ ] Smooth transition between themes\n- [ ] Theme preference saved in localStorage\n- [ ] All UI elements properly styled for dark mode\n- [ ] Toggle works on page reload\n\n## Files to Modify\n- `static/index.html`\n- `static/styles.css`\n- `static/app.js`"
+  },
+  {
+    "title": "Add Todo Priority Color Coding",
+    "labels": [
+      "frontend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Enhance the todo cards to show priority with more prominent color coding. High priority should be red, medium orange, and low green.\n\n## Acceptance Criteria\n- [ ] Priority colors are clearly visible\n- [ ] Color scheme is consistent\n- [ ] Works with existing priority filter\n- [ ] Accessible color contrast\n\n## Files to Modify\n- `static/styles.css`\n- `static/app.js`"
+  },
+  {
+    "title": "Add Drag and Drop Reordering",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Allow users to reorder todos by dragging and dropping them. The order should be saved and persisted.\n\n## Acceptance Criteria\n- [ ] Todos can be dragged and dropped\n- [ ] Visual feedback during drag\n- [ ] Order persists after page reload\n- [ ] Works on both desktop and touch devices\n\n## Files to Modify\n- `static/app.js`\n- `static/styles.css`\n- `backend/routes/todo_routes.py` (add order field)"
+  },
+  {
+    "title": "Add Todo Completion Animation",
+    "labels": [
+      "frontend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Add a smooth animation (fade out, checkmark animation) when a todo is marked as complete.\n\n## Acceptance Criteria\n- [ ] Smooth animation on completion\n- [ ] Checkmark animation\n- [ ] Visual feedback is clear\n- [ ] Animation doesn't block UI\n\n## Files to Modify\n- `static/styles.css`\n- `static/app.js`"
+  },
+  {
+    "title": "Add Todo Search Highlighting",
+    "labels": [
+      "frontend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "When searching, highlight the matching text in the todo title and description.\n\n## Acceptance Criteria\n- [ ] Search terms are highlighted\n- [ ] Highlighting works in title and description\n- [ ] Case-insensitive highlighting\n- [ ] Multiple matches are highlighted\n\n## Files to Modify\n- `static/app.js`\n- `static/styles.css`"
+  },
+  {
+    "title": "Add Todo Due Date Countdown",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Display a countdown timer showing time remaining until the due date. Show \"Overdue\" in red for past due dates.\n\n## Acceptance Criteria\n- [ ] Countdown timer displayed\n- [ ] Updates in real-time\n- [ ] \"Overdue\" shown for past dates\n- [ ] Clear visual indication\n\n## Files to Modify\n- `static/app.js`\n- `static/styles.css`"
+  },
+  {
+    "title": "Add Todo Bulk Actions",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add checkboxes to select multiple todos and perform bulk actions (delete, mark complete, change priority).\n\n## Acceptance Criteria\n- [ ] Checkboxes for selection\n- [ ] Select all/none functionality\n- [ ] Bulk delete, complete, priority change\n- [ ] Visual feedback for selected items\n\n## Files to Modify\n- `static/index.html`\n- `static/app.js`\n- `static/styles.css`\n- `backend/routes/todo_routes.py`"
+  },
+  {
+    "title": "Add Todo Categories Filter Dropdown",
+    "labels": [
+      "frontend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Replace the category filter select with a better dropdown that shows all available categories with counts.\n\n## Acceptance Criteria\n- [ ] Dropdown shows all categories\n- [ ] Shows count of todos per category\n- [ ] Better visual design\n- [ ] Easy to use\n\n## Files to Modify\n- `static/index.html`\n- `static/app.js`\n- `static/styles.css`"
+  },
+  {
+    "title": "Add Keyboard Shortcuts",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add keyboard shortcuts: `Ctrl+N` for new todo, `Ctrl+F` for search, `Esc` to close modals, etc.\n\n## Acceptance Criteria\n- [ ] Keyboard shortcuts documented\n- [ ] Shortcuts work as expected\n- [ ] Help modal showing shortcuts\n- [ ] No conflicts with browser shortcuts\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html` (add help modal)"
+  },
+  {
+    "title": "Add Todo Export to CSV",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add a button to export all todos (or filtered todos) to a CSV file that can be opened in Excel.\n\n## Acceptance Criteria\n- [ ] Export button in header\n- [ ] Exports to CSV format\n- [ ] Includes all todo fields\n- [ ] Respects current filters\n- [ ] File downloads automatically\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `static/styles.css`"
+  },
+  {
+    "title": "Add Todo Import from CSV",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Allow users to import todos from a CSV file. Show preview before importing.\n\n## Acceptance Criteria\n- [ ] Import button\n- [ ] File picker for CSV\n- [ ] Preview before import\n- [ ] Error handling for invalid files\n- [ ] Success/error feedback\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `backend/routes/todo_routes.py`"
+  },
+  {
+    "title": "Add Todo Templates",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add predefined todo templates (e.g., \"Meeting\", \"Project Task\", \"Personal\") that users can quickly create.\n\n## Acceptance Criteria\n- [ ] Template selection in add form\n- [ ] Pre-filled fields from template\n- [ ] Multiple templates available\n- [ ] Easy to use\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `static/styles.css`"
+  },
+  {
+    "title": "Add Todo Progress Bar",
+    "labels": [
+      "frontend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Add a progress bar in the stats section showing the percentage of completed todos.\n\n## Acceptance Criteria\n- [ ] Progress bar in stats section\n- [ ] Shows completion percentage\n- [ ] Updates in real-time\n- [ ] Visual and accessible\n\n## Files to Modify\n- `static/index.html`\n- `static/app.js`\n- `static/styles.css`"
+  },
+  {
+    "title": "Add Todo Sorting Options",
+    "labels": [
+      "frontend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Add sorting options: by date, priority, title, or completion status.\n\n## Acceptance Criteria\n- [ ] Sort dropdown\n- [ ] Multiple sort options\n- [ ] Ascending/descending toggle\n- [ ] Sort persists during session\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `static/styles.css`"
+  },
+  {
+    "title": "Add Todo Attachments/Images",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "hard"
+    ],
+    "body": "Allow users to attach images to todos. Display thumbnails in the todo card.\n\n## Acceptance Criteria\n- [ ] Image upload button\n- [ ] Image preview\n- [ ] Thumbnail display\n- [ ] Image storage (backend needed)\n- [ ] File size validation\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `backend/routes/todo_routes.py`\n- `backend/models.py`"
+  },
+  {
+    "title": "Add Todo Comments Section",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add a comments section to each todo where users can add multiple comments/notes.\n\n## Acceptance Criteria\n- [ ] Comments section in todo card\n- [ ] Add/edit/delete comments\n- [ ] Timestamp for each comment\n- [ ] Expandable/collapsible\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `backend/models.py`\n- `backend/routes/todo_routes.py`"
+  },
+  {
+    "title": "Add Todo Recurring Tasks",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "hard"
+    ],
+    "body": "Allow users to create recurring todos (daily, weekly, monthly) that automatically create new instances.\n\n## Acceptance Criteria\n- [ ] Recurrence options in form\n- [ ] Automatic creation of instances\n- [ ] Recurrence pattern selection\n- [ ] End date option\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `backend/models.py`\n- `backend/routes/todo_routes.py`"
+  },
+  {
+    "title": "Add Todo Sharing Feature",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add a share button that generates a shareable link for a todo (read-only view).\n\n## Acceptance Criteria\n- [ ] Share button on todo card\n- [ ] Generates shareable link\n- [ ] Copy to clipboard\n- [ ] Read-only view for shared link\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `backend/routes/todo_routes.py`"
+  },
+  {
+    "title": "Add Todo Calendar View",
+    "labels": [
+      "frontend",
+      "enhancement",
+      "hard"
+    ],
+    "body": "Add a calendar view showing todos organized by their due dates.\n\n## Acceptance Criteria\n- [ ] Calendar view toggle\n- [ ] Todos displayed on calendar\n- [ ] Click to view/edit todo\n- [ ] Month navigation\n- [ ] Responsive design\n\n## Files to Modify\n- `static/app.js`\n- `static/index.html`\n- `static/styles.css`"
+  },
+  {
+    "title": "Add Todo Print View",
+    "labels": [
+      "frontend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Add a print button that shows a clean, print-friendly view of all todos.\n\n## Acceptance Criteria\n- [ ] Print button\n- [ ] Print-friendly layout\n- [ ] Includes all todo information\n- [ ] Proper page breaks\n- [ ] Respects filters\n\n## Files to Modify\n- `static/styles.css`\n- `static/app.js`\n- `static/index.html`"
+  },
+  {
+    "title": "Add Todo Validation",
+    "labels": [
+      "backend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Add server-side validation for todo creation and updates. Validate title length, date formats, etc.\n\n## Acceptance Criteria\n- [ ] Title length validation (min 1, max 200)\n- [ ] Date format validation\n- [ ] Priority value validation\n- [ ] Return clear error messages\n- [ ] Tests for validation\n\n## Files to Modify\n- `backend/routes/todo_routes.py`\n- `backend/models.py`"
+  },
+  {
+    "title": "Add Pagination for Todos",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add pagination to the GET /api/todos endpoint to handle large numbers of todos efficiently.\n\n## Acceptance Criteria\n- [ ] Pagination parameters (page, per_page)\n- [ ] Returns pagination metadata\n- [ ] Default page size\n- [ ] Works with filters\n\n## Files to Modify\n- `backend/routes/todo_routes.py`\n- `static/app.js` (update frontend)"
+  },
+  {
+    "title": "Add Todo Search with Full-Text",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Improve search functionality with full-text search capabilities across title, description, and tags.\n\n## Acceptance Criteria\n- [ ] Full-text search implementation\n- [ ] Searches title, description, tags\n- [ ] Case-insensitive\n- [ ] Returns relevant results\n- [ ] Performance optimized\n\n## Files to Modify\n- `backend/routes/todo_routes.py`\n- `backend/models.py`"
+  },
+  {
+    "title": "Add Todo Archiving",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add ability to archive completed todos instead of deleting them. Archived todos are hidden but can be restored.\n\n## Acceptance Criteria\n- [ ] Archive field in Todo model\n- [ ] Archive endpoint\n- [ ] Restore endpoint\n- [ ] Filter archived todos\n- [ ] Soft delete implementation\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/todo_routes.py`\n- `static/app.js`"
+  },
+  {
+    "title": "Add Todo Activity Log",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Track all changes to todos (created, updated, completed, deleted) with timestamps and user info.\n\n## Acceptance Criteria\n- [ ] Activity log model\n- [ ] Log all todo changes\n- [ ] GET endpoint for activity log\n- [ ] Include user and timestamp\n- [ ] Filterable by todo\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/todo_routes.py`\n- `backend/routes/activity_routes.py` (new file)"
+  },
+  {
+    "title": "Add Todo Reminders System",
+    "labels": [
+      "backend",
+      "enhancement",
+      "hard"
+    ],
+    "body": "Create a background task system that sends reminders for todos based on due dates and user preferences.\n\n## Acceptance Criteria\n- [ ] Background task scheduler\n- [ ] Reminder logic\n- [ ] Configurable reminder times\n- [ ] Email and browser notifications\n- [ ] Prevents duplicate reminders\n\n## Files to Modify\n- `backend/services/notification_service.py`\n- `backend/services/reminder_service.py` (new file)\n- `app.py` (add scheduler)"
+  },
+  {
+    "title": "Add Todo Statistics API",
+    "labels": [
+      "backend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Expand the statistics endpoint to include more metrics: average completion time, most active category, etc.\n\n## Acceptance Criteria\n- [ ] Additional statistics calculated\n- [ ] Average completion time\n- [ ] Most used category\n- [ ] Completion rate over time\n- [ ] Performance optimized\n\n## Files to Modify\n- `backend/routes/todo_routes.py`\n- `static/app.js` (update frontend)"
+  },
+  {
+    "title": "Add Todo Duplicate Detection",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Detect and warn users when creating todos that are similar to existing ones (based on title similarity).\n\n## Acceptance Criteria\n- [ ] Similarity detection algorithm\n- [ ] Warning on duplicate creation\n- [ ] Configurable similarity threshold\n- [ ] Returns similar todos\n- [ ] Performance optimized\n\n## Files to Modify\n- `backend/routes/todo_routes.py`\n- `backend/services/todo_service.py` (new file)"
+  },
+  {
+    "title": "Add Todo Categories Management",
+    "labels": [
+      "backend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Add endpoints to manage categories: create, list, update, delete categories.\n\n## Acceptance Criteria\n- [ ] Category model (if needed)\n- [ ] CRUD endpoints\n- [ ] Category validation\n- [ ] Category usage count\n- [ ] Prevent deletion if in use\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/category_routes.py` (new file)"
+  },
+  {
+    "title": "Add Todo Tags Management",
+    "labels": [
+      "backend",
+      "good first issue",
+      "enhancement",
+      "easy"
+    ],
+    "body": "Create endpoints to manage tags separately, with autocomplete functionality.\n\n## Acceptance Criteria\n- [ ] Tag model\n- [ ] CRUD endpoints\n- [ ] Autocomplete endpoint\n- [ ] Tag usage statistics\n- [ ] Popular tags endpoint\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/tag_routes.py` (new file)"
+  },
+  {
+    "title": "Add Todo Export API",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add an API endpoint that exports todos in various formats (JSON, CSV, PDF).\n\n## Acceptance Criteria\n- [ ] Export endpoint\n- [ ] Multiple format support\n- [ ] Respects filters\n- [ ] Proper file generation\n- [ ] Error handling\n\n## Files to Modify\n- `backend/routes/todo_routes.py`\n- `backend/services/export_service.py` (new file)"
+  },
+  {
+    "title": "Add Todo Import API",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add an API endpoint to import todos from JSON or CSV files.\n\n## Acceptance Criteria\n- [ ] Import endpoint\n- [ ] File upload handling\n- [ ] Validation of imported data\n- [ ] Batch creation\n- [ ] Error reporting\n\n## Files to Modify\n- `backend/routes/todo_routes.py`\n- `backend/services/import_service.py` (new file)"
+  },
+  {
+    "title": "Add Todo Collaboration",
+    "labels": [
+      "backend",
+      "enhancement",
+      "hard"
+    ],
+    "body": "Allow multiple users to collaborate on todos. Add sharing permissions and user assignments.\n\n## Acceptance Criteria\n- [ ] User assignment to todos\n- [ ] Sharing permissions\n- [ ] Collaboration endpoints\n- [ ] Notification on assignment\n- [ ] Access control\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/todo_routes.py`\n- `backend/services/collaboration_service.py` (new file)"
+  },
+  {
+    "title": "Add Todo Version History",
+    "labels": [
+      "backend",
+      "enhancement",
+      "hard"
+    ],
+    "body": "Track version history of todos, allowing users to see changes and revert to previous versions.\n\n## Acceptance Criteria\n- [ ] Version history model\n- [ ] Track all changes\n- [ ] Revert functionality\n- [ ] Version comparison\n- [ ] History endpoint\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/todo_routes.py`\n- `backend/services/version_service.py` (new file)"
+  },
+  {
+    "title": "Add Todo Attachments API",
+    "labels": [
+      "backend",
+      "enhancement",
+      "hard"
+    ],
+    "body": "Add ability to attach files to todos. Handle file uploads, storage, and retrieval.\n\n## Acceptance Criteria\n- [ ] File upload endpoint\n- [ ] File storage system\n- [ ] File retrieval endpoint\n- [ ] File size limits\n- [ ] File type validation\n- [ ] Secure file handling\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/todo_routes.py`\n- `backend/services/file_service.py` (new file)"
+  },
+  {
+    "title": "Add Todo Comments API",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Implement a comments system where users can add comments to todos.\n\n## Acceptance Criteria\n- [ ] Comment model\n- [ ] CRUD endpoints for comments\n- [ ] Comments linked to todos\n- [ ] User attribution\n- [ ] Timestamps\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/comment_routes.py` (new file)"
+  },
+  {
+    "title": "Add Todo Recurrence API",
+    "labels": [
+      "backend",
+      "enhancement",
+      "hard"
+    ],
+    "body": "Add support for recurring todos with various recurrence patterns (daily, weekly, monthly).\n\n## Acceptance Criteria\n- [ ] Recurrence model\n- [ ] Recurrence pattern parsing\n- [ ] Automatic instance creation\n- [ ] Recurrence endpoints\n- [ ] End date handling\n\n## Files to Modify\n- `backend/models.py`\n- `backend/routes/todo_routes.py`\n- `backend/services/recurrence_service.py` (new file)"
+  },
+  {
+    "title": "Add Todo Analytics API",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Create an analytics endpoint that provides insights: completion trends, productivity metrics, etc.\n\n## Acceptance Criteria\n- [ ] Analytics calculation\n- [ ] Completion trends\n- [ ] Productivity metrics\n- [ ] Time-based analytics\n- [ ] Performance optimized\n\n## Files to Modify\n- `backend/routes/analytics_routes.py` (new file)\n- `backend/services/analytics_service.py` (new file)"
+  },
+  {
+    "title": "Add Todo API Rate Limiting",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add rate limiting to prevent API abuse. Use Flask-Limiter or similar.\n\n## Acceptance Criteria\n- [ ] Rate limiting middleware\n- [ ] Configurable limits\n- [ ] Per-endpoint limits\n- [ ] Clear error messages\n- [ ] Documentation\n\n## Files to Modify\n- `app.py`\n- `requirements.txt`\n- `backend/routes/*.py`"
+  },
+  {
+    "title": "Add Todo API Caching",
+    "labels": [
+      "backend",
+      "enhancement",
+      "medium"
+    ],
+    "body": "Add caching to improve API performance, especially for frequently accessed endpoints like stats and lists.\n\n## Acceptance Criteria\n- [ ] Caching implementation\n- [ ] Cache invalidation\n- [ ] Configurable TTL\n- [ ] Performance improvement\n- [ ] Cache statistics\n\n## Files to Modify\n- `app.py`\n- `backend/routes/todo_routes.py`\n- `requirements.txt`"
+  }
+]
