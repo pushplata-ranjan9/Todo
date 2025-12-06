@@ -4,19 +4,21 @@ Database models for Todo application
 from datetime import datetime
 from backend.database import db
 
+class BaseModel(db.Model):
+    __abstract__ = True
+    id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
-class Todo(db.Model):
+class Todo(BaseModel):
     """Todo model"""
     __tablename__ = 'todos'
     
-    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=True)
     completed = db.Column(db.Boolean, default=False, nullable=False)
     priority = db.Column(db.String(20), default='medium', nullable=False)  # low, medium, high
     due_date = db.Column(db.DateTime, nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
     category = db.Column(db.String(50), nullable=True)
     tags = db.Column(db.String(200), nullable=True)  # Comma-separated tags
@@ -45,14 +47,12 @@ class Todo(db.Model):
         return f'<Todo {self.id}: {self.title}>'
 
 
-class User(db.Model):
+class User(BaseModel):
     """User model"""
     __tablename__ = 'users'
     
-    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     email_notifications_enabled = db.Column(db.Boolean, default=True, nullable=False)
     browser_notifications_enabled = db.Column(db.Boolean, default=True, nullable=False)
     
@@ -71,10 +71,9 @@ class User(db.Model):
         return f'<User {self.username}>'
 
 
-class Notification(db.Model):
+class Notification(BaseModel):
     """Notification model"""
     __tablename__ = 'notifications'
-    
     id = db.Column(db.Integer, primary_key=True)
     todo_id = db.Column(db.Integer, db.ForeignKey('todos.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -82,7 +81,6 @@ class Notification(db.Model):
     type = db.Column(db.String(50), nullable=False)  # email, browser, both
     sent = db.Column(db.Boolean, default=False, nullable=False)
     sent_at = db.Column(db.DateTime, nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     
     # Relationships
     user = db.relationship('User', backref=db.backref('notifications', lazy=True))
